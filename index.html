@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equilibrio Químico · Cuaderno interactivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="shell">
+  <nav class="side">
+    <div class="brand">
+      <svg class="flask" viewBox="0 0 24 24" fill="none"><path d="M9 2h6M10 2v6.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 8.5V2" stroke="#5fb8a8" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 15h10" stroke="#e2a23c" stroke-width="1.6"/></svg>
+      <div>
+        <h1>Equilibrio Químico</h1>
+        <small>Cuaderno interactivo · Bachillerato</small>
+      </div>
+    </div>
+    <div class="side-sub">7 temas · visualización + quiz</div>
+    <ul class="navlist" id="navlist">
+      <li><a href="#intro" class="n">01</a></li>
+      <li><a href="#kc" class="n">02</a></li>
+      <li><a href="#kp" class="n">03</a></li>
+      <li><a href="#qk" class="n">04</a></li>
+      <li><a href="#lechatelier" class="n">05</a></li>
+      <li><a href="#ice" class="n">06</a></li>
+      <li><a href="#quiz" class="n">07</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ============ 01 INTRO ============ -->
+    <section id="intro">
+      <div class="eyebrow">01 · Fundamentos</div>
+      <h2>¿Qué es el equilibrio químico?</h2>
+      <p class="lead">Un estado dinámico, no estático: las reacciones nunca se detienen, pero sus efectos netos dejan de notarse.</p>
+
+      <div class="card">
+        <div class="eyebrow">Idea central</div>
+        <p>En una reacción <strong>reversible</strong> —que ocurre en ambos sentidos— llega un momento en que la <strong>velocidad de la reacción directa</strong> (reactivos → productos) se iguala a la <strong>velocidad de la reacción inversa</strong> (productos → reactivos). A partir de ese instante, las concentraciones de todas las sustancias permanecen constantes... pero las moléculas siguen reaccionando en ambos sentidos, todo el tiempo. Por eso se llama <strong>equilibrio dinámico</strong>, no un equilibrio "congelado".</p>
+        <div class="formula">N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g)</div>
+        <p style="margin-top:14px;">La doble flecha (⇌) es la señal visual de que una reacción es reversible y puede alcanzar equilibrio.</p>
+      </div>
+
+      <h3 style="margin-top:36px;">Cómo se llega al equilibrio</h3>
+      <p>Observa el comportamiento típico de las velocidades de reacción a medida que transcurre el tiempo, desde que se mezclan los reactivos hasta que el sistema se estabiliza.</p>
+      <div class="balance-wrap">
+        <svg viewBox="0 0 640 260" width="100%" height="260" id="rateChart">
+          <!-- axes -->
+          <line x1="60" y1="20" x2="60" y2="220" stroke="#3f4b45" stroke-width="1.5"/>
+          <line x1="60" y1="220" x2="600" y2="220" stroke="#3f4b45" stroke-width="1.5"/>
+          <text x="30" y="20" fill="#93a39c" font-size="11" font-family="IBM Plex Mono">v</text>
+          <text x="590" y="240" fill="#93a39c" font-size="11" font-family="IBM Plex Mono">t</text>
+          <!-- forward rate: decreasing, curve -->
+          <path d="M70,40 C 200,60 320,150 580,150" fill="none" stroke="#5fb8a8" stroke-width="2.4"/>
+          <!-- reverse rate: increasing -->
+          <path d="M70,210 C 200,190 320,155 580,150" fill="none" stroke="#e2a23c" stroke-width="2.4"/>
+          <line x1="330" y1="20" x2="330" y2="220" stroke="#d1604a" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="336" y="35" fill="#d1604a" font-size="11" font-family="IBM Plex Mono">equilibrio</text>
+          <text x="530" y="140" fill="#5fb8a8" font-size="11" font-family="IBM Plex Mono">v directa</text>
+          <text x="530" y="168" fill="#e2a23c" font-size="11" font-family="IBM Plex Mono">v inversa</text>
+        </svg>
+        <p style="color:var(--text-dim); font-size:.9rem; margin-top:6px;">A la izquierda del punto punteado, hay más reactivos y la reacción directa domina. Con el tiempo, los reactivos se consumen (v directa baja) y se forman más productos (v inversa sube), hasta que ambas coinciden: ahí comienza el equilibrio.</p>
+      </div>
+
+      <details class="exp">
+        <summary>¿Por qué las concentraciones no cambian si la reacción sigue ocurriendo? <span></span></summary>
+        <div class="body">Porque por cada molécula de producto que se forma, en ese mismo instante se está formando —en promedio— una molécula de reactivo por la reacción inversa. El resultado neto es cero cambio observable, aunque a nivel molecular todo sigue en movimiento. Es como una escalera mecánica con la misma cantidad de gente subiendo y bajando: el número de personas visibles en cada tramo no cambia, aunque cada persona se mueva.</div>
+      </details>
+      <details class="exp">
+        <summary>Condición clave: sistema cerrado</summary>
+        <div class="body">El equilibrio químico solo se alcanza en un <strong>sistema cerrado</strong>, donde no entran ni salen sustancias del entorno de reacción. Si el sistema es abierto (por ejemplo, un gas que escapa), nunca se estabiliza porque el sistema pierde masa continuamente.</div>
+      </details>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- ============ 02 KC ============ -->
+    <section id="kc">
+      <div class="eyebrow">02 · La constante de equilibrio</div>
+      <h2>Constante K<sub>c</sub></h2>
+      <p class="lead">Un número que resume, para una temperatura dada, hacia qué lado "prefiere" estar una reacción en equilibrio.</p>
+
+      <div class="card">
+        <div class="eyebrow">Expresión general</div>
+        <p>Para una reacción general:</p>
+        <div class="formula">a A + b B ⇌ c C + d D</div>
+        <p style="margin-top:14px;">La constante de equilibrio en función de concentraciones molares es:</p>
+        <div class="formula">
+          K<sub>c</sub> =
+          <span class="frac"><span class="num">[C]<sup>c</sup>[D]<sup>d</sup></span><span>[A]<sup>a</sup>[B]<sup>b</sup></span></span>
+        </div>
+        <p style="margin-top:14px;">Fíjate en el patrón: <strong>productos arriba, reactivos abajo</strong>, cada uno elevado a su coeficiente estequiométrico.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <div class="eyebrow">Interpretación del valor</div>
+          <p><span class="tag">K &gt;&gt; 1</span> En el equilibrio predominan los <strong>productos</strong>. La reacción "va casi hasta el final".</p>
+          <p><span class="tag amber">K ≈ 1</span> Cantidades comparables de reactivos y productos.</p>
+          <p><span class="tag coral">K &lt;&lt; 1</span> En el equilibrio predominan los <strong>reactivos</strong>. La reacción "casi no avanza".</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Regla importante</div>
+          <p>Los <strong>sólidos puros</strong> y los <strong>líquidos puros</strong> (incluyendo el agua como disolvente) <strong>no se incluyen</strong> en la expresión de K, porque su concentración efectiva no cambia durante la reacción.</p>
+          <div class="formula" style="font-size:.92rem;">CaCO<sub>3</sub>(s) ⇌ CaO(s) + CO<sub>2</sub>(g)<br>K<sub>c</sub> = [CO<sub>2</sub>]</div>
+        </div>
+      </div>
+
+      <details class="exp">
+        <summary>Ejemplo resuelto: escribir la expresión de K<sub>c</sub></summary>
+        <div class="body">
+          <p><strong>Reacción:</strong> 2 SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 SO<sub>3</sub>(g)</p>
+          <p><strong>Paso 1.</strong> Identifica productos (SO<sub>3</sub>) y reactivos (SO<sub>2</sub>, O<sub>2</sub>).</p>
+          <p><strong>Paso 2.</strong> Coloca productos arriba con su coeficiente como exponente, reactivos abajo igual.</p>
+          <div class="formula" style="margin-top:10px;">K<sub>c</sub> = [SO<sub>3</sub>]<sup>2</sup> / ([SO<sub>2</sub>]<sup>2</sup>[O<sub>2</sub>])</div>
+          <p style="margin-top:10px;">Nota que el 2 de SO<sub>3</sub> y de SO<sub>2</sub> proviene directamente de los coeficientes de la ecuación balanceada.</p>
+        </div>
+      </details>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- ============ 03 KP ============ -->
+    <section id="kp">
+      <div class="eyebrow">03 · Fase gaseosa</div>
+      <h2>Constante K<sub>p</sub> y su relación con K<sub>c</sub></h2>
+      <p class="lead">Cuando todas las especies son gases, también se puede expresar el equilibrio en función de presiones parciales.</p>
+
+      <div class="card">
+        <div class="formula">K<sub>p</sub> = K<sub>c</sub> (RT)<sup>Δn</sup></div>
+        <p style="margin-top:14px;">Donde:</p>
+        <ul>
+          <li><strong>R</strong> = 0.0821 atm·L/(mol·K)</li>
+          <li><strong>T</strong> = temperatura en Kelvin</li>
+          <li><strong>Δn</strong> = (moles de gas en productos) − (moles de gas en reactivos), usando los coeficientes de la ecuación balanceada</li>
+        </ul>
+        <p>Si <strong>Δn = 0</strong> (mismo número de moles de gas en ambos lados), entonces K<sub>p</sub> = K<sub>c</sub>.</p>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">Calculadora rápida</div>
+        <p>Prueba con tus propios valores para ver cómo cambia K<sub>p</sub>:</p>
+        <div class="calc-row">
+          <div class="field"><label>Kc</label><input type="number" id="kcIn" value="0.040" step="0.001"></div>
+          <div class="field"><label>Δn</label><input type="number" id="dnIn" value="-2" step="1"></div>
+          <div class="field"><label>T (K)</label><input type="number" id="tIn" value="500" step="1"></div>
+        </div>
+        <div id="kpResult"></div>
+      </div>
+      <p style="color:var(--text-dim); font-size:.88rem;">Ejemplo cargado: N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g), donde Δn = 2 − (1+3) = −2.</p>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- ============ 04 Q vs K ============ -->
+    <section id="qk">
+      <div class="eyebrow">04 · Dirección de la reacción</div>
+      <h2>Cociente de reacción Q, frente a K</h2>
+      <p class="lead">Q se calcula exactamente igual que K, pero con las concentraciones en <em>cualquier</em> momento, no solo en equilibrio. Comparar Q con K te dice hacia dónde se moverá la reacción.</p>
+
+      <div class="balance-wrap">
+        <svg id="balanceSvg" viewBox="0 0 400 220" width="380" height="210">
+          <!-- stand -->
+          <line x1="200" y1="40" x2="200" y2="190" stroke="#93a39c" stroke-width="4"/>
+          <polygon points="180,190 220,190 210,210 190,210" fill="#93a39c"/>
+          <!-- beam group rotates -->
+          <g id="beam">
+            <line x1="70" y1="40" x2="330" y2="40" stroke="#e7ede9" stroke-width="4"/>
+            <circle cx="200" cy="40" r="6" fill="#e2a23c"/>
+            <!-- left pan (reactivos) -->
+            <line x1="70" y1="40" x2="70" y2="80" stroke="#93a39c" stroke-width="2"/>
+            <polygon id="panL" points="45,80 95,80 90,100 50,100" fill="#5fb8a8" fill-opacity="0.85"/>
+            <text x="70" y="118" text-anchor="middle" fill="#e7ede9" font-family="IBM Plex Mono" font-size="12">reactivos</text>
+            <!-- right pan (productos) -->
+            <line x1="330" y1="40" x2="330" y2="80" stroke="#93a39c" stroke-width="2"/>
+            <polygon id="panR" points="305,80 355,80 350,100 310,100" fill="#d1604a" fill-opacity="0.85"/>
+            <text x="330" y="118" text-anchor="middle" fill="#e7ede9" font-family="IBM Plex Mono" font-size="12">productos</text>
+          </g>
+        </svg>
+
+        <div class="balance-controls">
+          <div class="field">
+            <label>[Productos] simuladas — <span class="val" id="pVal">0.60</span> M</label>
+            <input type="range" id="pRange" min="0.05" max="2" step="0.01" value="0.60">
+          </div>
+          <div class="field">
+            <label>[Reactivos] simuladas — <span class="val" id="rVal">0.60</span> M</label>
+            <input type="range" id="rRange" min="0.05" max="2" step="0.01" value="0.60">
+          </div>
+          <div class="field">
+            <label>K de la reacción — <span class="val" id="kVal">1.00</span></label>
+            <input type="range" id="kRange" min="0.05" max="5" step="0.01" value="1.00">
+          </div>
+        </div>
+        <div id="qkVerdict"></div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">Regla de decisión</div>
+        <p><span class="tag">Q &lt; K</span> Faltan productos respecto al equilibrio → la reacción avanza <strong>hacia la derecha</strong> (se forman más productos).</p>
+        <p><span class="tag amber">Q = K</span> El sistema ya está en equilibrio → <strong>no hay cambio neto</strong>.</p>
+        <p><span class="tag coral">Q &gt; K</span> Hay demasiados productos respecto al equilibrio → la reacción avanza <strong>hacia la izquierda</strong> (se forman más reactivos).</p>
+      </div>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- ============ 05 LE CHATELIER ============ -->
+    <section id="lechatelier">
+      <div class="eyebrow">05 · Perturbaciones del sistema</div>
+      <h2>Principio de Le Chatelier</h2>
+      <p class="lead">Si perturbas un sistema en equilibrio, éste se desplaza para contrarrestar parcialmente esa perturbación. Toca cada tarjeta para ver el detalle.</p>
+
+      <div class="factor-grid" id="factorGrid">
+        <div class="factor" data-open="false">
+          <span class="toggle-hint">tocar</span>
+          <div class="icon">🧪</div>
+          <h4>Concentración</h4>
+          <p class="hint">Agregar o quitar reactivo/producto.</p>
+          <div class="more">Si <strong>agregas</strong> reactivo, el equilibrio se desplaza hacia los <strong>productos</strong> para consumir el exceso. Si <strong>quitas</strong> producto, el equilibrio también se desplaza hacia los productos, para reponer lo que falta. La regla general: el sistema se mueve para "compensar" lo que se hizo.</div>
+        </div>
+        <div class="factor" data-open="false">
+          <span class="toggle-hint">tocar</span>
+          <div class="icon">🌡️</div>
+          <h4>Temperatura</h4>
+          <p class="hint">Trata el calor como un reactivo o producto más.</p>
+          <div class="more">En una reacción <strong>exotérmica</strong> (libera calor), el calor actúa como producto: aumentar T desplaza el equilibrio hacia los <strong>reactivos</strong>. En una reacción <strong>endotérmica</strong> (absorbe calor), el calor actúa como reactivo: aumentar T desplaza el equilibrio hacia los <strong>productos</strong>. Es el único factor que además <strong>cambia el valor numérico de K</strong>.</div>
+        </div>
+        <div class="factor" data-open="false">
+          <span class="toggle-hint">tocar</span>
+          <div class="icon">📦</div>
+          <h4>Presión / Volumen</h4>
+          <p class="hint">Solo importa si hay gases con distinto número de moles.</p>
+          <div class="more">Si <strong>reduces el volumen</strong> (aumentas presión), el equilibrio se desplaza hacia el lado con <strong>menos moles de gas</strong>. Si <strong>aumentas el volumen</strong> (reduces presión), se desplaza hacia el lado con <strong>más moles de gas</strong>. Si ambos lados tienen igual número de moles gaseosos, la presión no afecta la posición del equilibrio.</div>
+        </div>
+        <div class="factor" data-open="false">
+          <span class="toggle-hint">tocar</span>
+          <div class="icon">⚡</div>
+          <h4>Catalizador</h4>
+          <p class="hint">Acelera, pero no desplaza.</p>
+          <div class="more">Un catalizador acelera tanto la reacción directa como la inversa <strong>por igual</strong>. Por eso el sistema llega más rápido al equilibrio, pero <strong>la posición final del equilibrio no cambia</strong> y K tampoco cambia. Es un error común de examen pensar que un catalizador "favorece" un lado.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- ============ 06 ICE ============ -->
+    <section id="ice">
+      <div class="eyebrow">06 · Método de cálculo</div>
+      <h2>Tablas ICE</h2>
+      <p class="lead">La herramienta más usada para calcular concentraciones en equilibrio: Inicial, Cambio (Change), Equilibrio.</p>
+
+      <div class="card">
+        <div class="eyebrow">Problema</div>
+        <p>Se coloca 1.00 mol de H<sub>2</sub> y 1.00 mol de I<sub>2</sub> en un recipiente de 1 L. La reacción es:</p>
+        <div class="formula">H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g) &nbsp;&nbsp; K<sub>c</sub> = 54.0</div>
+        <p style="margin-top:10px;">Encuentra las concentraciones de todas las especies en equilibrio.</p>
+
+        <table class="ice">
+          <thead><tr><th></th><th>H<sub>2</sub></th><th>I<sub>2</sub></th><th>HI</th></tr></thead>
+          <tbody>
+            <tr><td>I (inicial)</td><td>1.00</td><td>1.00</td><td>0</td></tr>
+            <tr><td>C (cambio)</td><td>−x</td><td>−x</td><td>+2x</td></tr>
+            <tr><td>E (equilibrio)</td><td>1.00−x</td><td>1.00−x</td><td>2x</td></tr>
+          </tbody>
+        </table>
+
+        <div class="ice-steps">
+          <button id="iceBtn">Mostrar solución paso a paso →</button>
+          <div class="ice-note" id="iceStep1"><strong>Paso 1 — Sustituir en K<sub>c</sub>:</strong> 54.0 = (2x)² / [(1.00−x)(1.00−x)] = (2x)²/(1.00−x)²</div>
+          <div class="ice-note" id="iceStep2"><strong>Paso 2 — Sacar raíz cuadrada</strong> a ambos lados (válido porque es un cociente de cuadrados perfectos): √54.0 = 2x/(1.00−x) → 7.35 = 2x/(1.00−x)</div>
+          <div class="ice-note" id="iceStep3"><strong>Paso 3 — Despejar x:</strong> 7.35(1.00−x) = 2x → 7.35 − 7.35x = 2x → 7.35 = 9.35x → x = 0.786</div>
+          <div class="ice-note" id="iceStep4"><strong>Paso 4 — Sustituir de vuelta:</strong> [H<sub>2</sub>] = [I<sub>2</sub>] = 1.00 − 0.786 = 0.214 M &nbsp;·&nbsp; [HI] = 2(0.786) = 1.57 M</div>
+        </div>
+      </div>
+
+      <details class="exp">
+        <summary>Cuándo usar la fórmula cuadrática en vez de la raíz cuadrada</summary>
+        <div class="body">La raíz cuadrada solo funciona cuando ambos lados de la ecuación son cuadrados perfectos limpios (como en el ejemplo anterior, coeficientes 1:1:2). Si los coeficientes son distintos o la expresión no se simplifica a un cuadrado perfecto, debes expandir la ecuación y resolverla con la fórmula general: x = [−b ± √(b²−4ac)] / 2a, descartando la raíz que dé una concentración negativa (físicamente imposible).</div>
+      </details>
+      <details class="exp">
+        <summary>Aproximación "x es despreciable" (cuando K es muy pequeña)</summary>
+        <div class="body">Si K &lt; 10⁻⁴ aproximadamente, y la concentración inicial no es demasiado baja, puedes asumir que (inicial − x) ≈ inicial, evitando resolver la ecuación completa. Al final, <strong>siempre verifica</strong>: si x resulta menor al 5% del valor inicial, la aproximación fue válida.</div>
+      </details>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- ============ 07 QUIZ ============ -->
+    <section id="quiz">
+      <div class="eyebrow">07 · Autoevaluación</div>
+      <h2>Quiz de repaso</h2>
+      <p class="lead">6 preguntas de práctica, con retroalimentación inmediata. Ideal para detectar puntos débiles antes del examen.</p>
+
+      <div id="quizContainer"></div>
+
+      <div id="scoreBox">
+        <span>Puntaje</span>
+        <div class="bar"><i id="scoreBar"></i></div>
+        <span id="scoreText" class="mono">0 / 6</span>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Cuaderno interactivo de equilibrio químico · nivel bachillerato. Guárdalo como archivo HTML para consultarlo sin conexión, o súbelo a un servicio como GitHub Pages para compartirlo con otras personas.
+</footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
